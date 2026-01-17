@@ -28,9 +28,20 @@ SHARED_APPS = [
     'tenant',
     'users',
     'home',
+    'subscriptions',
+
+    # django-tenant-users
+    "tenant_users.permissions",  # new
+    "tenant_users.tenants",  # new
+
 ]
 
 TENANT_APPS = [
+    # django-tenant-users
+    "django.contrib.auth",  # new
+    "django.contrib.contenttypes",  # new
+    "tenant_users.permissions",  # new
+
     "todo",
 ]
 
@@ -51,15 +62,20 @@ ROOT_URLCONF = "tenant_proj.urls"
 # This is your public schema URL config
 PUBLIC_SCHEMA_URLCONF = "tenant_proj.urls_public"
 
-
+# django-tenant-users 
+TENANT_USERS_DOMAIN = BASE_DOMAIN
+AUTHENTICATION_BACKENDS = [
+    "tenant_users.permissions.backend.UserBackend",
+] 
 
 '''----------------------------------'''
 
 MIDDLEWARE = [
-    "django_tenants.middleware.main.TenantMainMiddleware", 
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.contrib.auth.middleware.AuthenticationMiddleware", # django-tenant-users
+    "django_tenants.middleware.main.TenantMainMiddleware",     # must be here 
 
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

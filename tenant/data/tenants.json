@@ -2,10 +2,12 @@
   {
     "id": 1,
     "name": "Public Tenant",
+    "slug": "public",
     "schema_name": "public",
     "subdomain": "",
+    "plan": "free",
+    "is_active": true,
     "owner": {
-      "username": "admin@localhost",
       "email": "admin@localhost",
       "password": "password"
     }
@@ -13,23 +15,38 @@
   {
     "id": 2,
     "name": "Demo1 Tenant",
+    "slug": "demo1",
     "schema_name": "demo1",
     "subdomain": "demo1",
+    "plan": "free",
+    "is_active": true,
     "owner": {
-      "username": "admin@demo1.localhost",
       "email": "admin@demo1.localhost",
-      "password": "password"
-    }
+      "password": "password",
+      "is_staff" : true , 
+      "is_superuser" : true 
+    },
+    "role_users": [
+      {
+        "email": "manager1@demo1.localhost",
+        "password": "password",
+        "role": "manager"
+      }
+    ]
   },
   {
     "id": 3,
     "name": "Demo2 Tenant",
+    "slug": "demo2",
     "schema_name": "demo2",
     "subdomain": "demo2",
+    "plan": "free",
+    "is_active": true,
     "owner": {
-      "username": "admin@demo2.localhost",
       "email": "admin@demo2.localhost",
-      "password": "password"
+      "password": "password" ,
+      "is_staff" : true , 
+      "is_superuser" : true 
     }
   }
 ]

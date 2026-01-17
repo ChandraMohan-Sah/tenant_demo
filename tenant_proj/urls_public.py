@@ -11,7 +11,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     # public urls 
-    path("", home_views.home, name="home-page"),
+    path("", home_views.home, name="home-page"),# for home 
+                                                # for subscriptions : just register in admin panel 
+                                                
 ]
 
 if settings.DEBUG:
